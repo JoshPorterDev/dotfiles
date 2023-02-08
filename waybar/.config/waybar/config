@@ -3,24 +3,28 @@
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["mpd"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "backlight", "battery", "battery#bat2", "clock", "tray"],
     // Modules configuration
-    "sway/workspaces": {
+    "wlr/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}",
     },
     "mpd": {
-        "format": "{album} - {title}",
+        "format": "{artist} - {album} - {title}",
+        "format-disconnected": "Disconnected",
+        "format-stopped": "Stopped",
         "unknown-tag": "N/A",
         "interval": 2,
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/Chicago",
+        // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -42,17 +46,25 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}%",
+        "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%)",
         "format-ethernet": "{ipaddr}",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -60,4 +72,3 @@
         "on-click": "pavucontrol"
     },
 }
-

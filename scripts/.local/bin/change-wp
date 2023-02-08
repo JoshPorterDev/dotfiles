@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Clear wal cache
+wal -c
+
+path=~/.local/share/wallpapers/bg
+
+wal -i $path
+setwallpaper $path
+
+# https://github.com/Alexays/Waybar/wiki/FAQ#how-can-I-reload-the-configuration-without-restarting-waybar
+killall -SIGUSR2 waybar
