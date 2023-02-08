@@ -1,17 +1,18 @@
-@define-color background {color0};
-@define-color foreground {color1};
+@define-color background {background};
+@define-color foreground {foreground};
 
 * {{
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "JetBrainsMono NF";
+    font-family: "JetBrainsMono";
     border-radius: 6px;
-    font-size: 18px;
+    font-size: 12px;
 }}
 
 window#waybar {{
     /* background-color: rgba(43, 48, 59, 0.9); */
     background-color: @background;
     opacity: 0.93;
+    border-radius: 0px;
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: @foreground;
     transition-property: background-color;
